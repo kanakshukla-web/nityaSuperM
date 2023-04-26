@@ -12,7 +12,7 @@ export default function Navbar(props) {
     if (localStorage.getItem("isLoggedIn")) {
       setLoginText("Logout")
     }
-  })
+  },[])
 
   const cartCount = props.cart.reduce(
     (total, product) => total + product.quantity,
@@ -25,7 +25,7 @@ export default function Navbar(props) {
     }
     else if (logInText === 'Logout') {
       alert("You have been logged out successfully.");
-      if (localStorage.getItem('loginMode') == 'google') {
+      if (localStorage.getItem('loginMode') === 'google') {
         googleLogout();
       }
       localStorage.clear();

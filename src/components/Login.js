@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { logInApi } from '../ApiPaths';
 import Card from 'react-bootstrap/Card';
 import { GoogleLogin } from '@react-oauth/google';
@@ -43,7 +43,7 @@ const Login = () => {
                 body: JSON.stringify(loginData)
             })
             const result = await response.json();
-            if (result.Response.statusCode == 200) {
+            if (result.Response.statusCode === 200) {
                 console.log(result.Response.message);
                 localStorage.setItem("isLoggedIn", 'true')
                 localStorage.setItem("loginMode", 'normal')
@@ -118,12 +118,7 @@ const Login = () => {
 
                             <button className='btn btn-primary' type="button" onClick={handleSubmit}>Login</button>
                             <hr />
-                            <label>
-                                <input type="checkbox"
-                                    checked="checked"
-                                    name="remember" /> Remember me
-                            </label>
-                            <span className="psw"><a href="#">Forgot password?</a></span>
+                            <div className="psw"><NavLink to="/about">Forgot password?</NavLink></div>
                         </div>
 
                     </form>

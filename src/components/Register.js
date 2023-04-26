@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
-import { registerApi } from '../ApiPaths';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import { Card } from 'react-bootstrap';
-import Button from './Button';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { registerApi } from '../ApiPaths';
 
 const Register = () => {
 
@@ -47,7 +46,7 @@ const Register = () => {
                 body: JSON.stringify(userData)
             })
             const result = await response.json();
-            if (result.Response.statusCode == 201) {
+            if (result.Response.statusCode === 201) {
                 console.log(result.Response.message);
                 clearForm();
                 navigate("../login");
@@ -104,7 +103,7 @@ const Register = () => {
                         />
                         <hr />
 
-                        <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                        <p>By creating an account you agree to our <NavLink to="/">Terms & Privacy</NavLink>.</p>
                         <button type="submit" onClick={(e) => handleSubmit(e)} className="btn btn-primary">Register</button>
 
                     </form>
